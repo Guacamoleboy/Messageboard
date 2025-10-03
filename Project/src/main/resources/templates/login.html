@@ -10,11 +10,11 @@
     <meta name="author" content="Gruppe D"> <!-- Author of Website -->
 
     <!-- Visuals -->
-    <title>Olsker Cupcakes</title>
+    <title>Messageboard</title>
 
     <!-- Icon -->
-    <link rel="icon" href="images/icons/cupcake-1.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
-    <link rel="apple-touch-icon" href="images/icons/cupcake-1.png">
+    <link rel="icon" href="images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
+    <link rel="apple-touch-icon" href="images/icons/msgboard.png">
 
     <!-- CSS Load -->
     <link rel="stylesheet" href="css/style.css">
@@ -37,11 +37,11 @@
 <section class="login-section-1">
     <div class="login-container">
         <h2>Log Ind</h2>
-        <form id="loginForm">
-            <input type="text" placeholder="Brugernavn" required>
-            <input type="password" placeholder="Adgangskode" required>
+        <form id="loginForm" method="post" action="/">
+            <input type="text" name="username" placeholder="Brugernavn" required>
+            <input type="password" name="password" placeholder="Adgangskode" required>
             <div class="login-btn-group">
-                <button type="submit" class="guac-btn guac-btn-form" onclick="window.location.href='/index'">
+                <button type="submit" class="guac-btn guac-btn-form">
                     Log Ind
                 </button>
                 <button type="button" class="guac-btn guac-btn-form" id="registerBtn" onclick="window.location.href='/register'">

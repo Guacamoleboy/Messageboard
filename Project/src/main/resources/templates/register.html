@@ -10,11 +10,11 @@
     <meta name="author" content="Gruppe D"> <!-- Author of Website -->
 
     <!-- Visuals -->
-    <title>Olsker Cupcakes</title>
+    <title>Messageboard</title>
 
     <!-- Icon -->
-    <link rel="icon" href="images/icons/cupcake-1.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
-    <link rel="apple-touch-icon" href="images/icons/cupcake-1.png">
+    <link rel="icon" href="images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
+    <link rel="apple-touch-icon" href="images/icons/msgboard.png">
 
     <!-- CSS Load -->
     <link rel="stylesheet" href="css/style.css">
@@ -34,15 +34,17 @@
 <section class="login-section-1">
     <div class="login-container">
         <h2>Opret Bruger</h2>
-        <form id="registerForm">
-            <input type="text" placeholder="Brugernavn" required>
-            <input type="password" placeholder="Adgangskode" required>
-            <input type="email" placeholder="Email" required>
+        <form id="registerForm" method="post" action="/register">
+            <input type="text" name="username" placeholder="Brugernavn" required>
+            <input type="password" name="password" placeholder="Adgangskode" required>
+            <input type="email" name="email" placeholder="Email" required>
             <div class="login-btn-group">
-                <button type="button" class="guac-btn guac-btn-form" onclick="window.location.href='/login'">
+                <!-- Tilbage-knap: blot GET til login -->
+                <button type="button" class="guac-btn guac-btn-form" onclick="window.location.href='/'">
                     Tilbage
                 </button>
-                <button type="button" class="guac-btn guac-btn-form" onclick="window.location.href='/index'">
+                <!-- Opret Bruger-knap sender nu korrekt POST til /register -->
+                <button type="submit" class="guac-btn guac-btn-form">
                     Opret Bruger
                 </button>
             </div>

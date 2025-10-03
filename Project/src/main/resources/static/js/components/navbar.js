@@ -8,7 +8,7 @@ const navbarHTML = `
         <!-- Logo Left Start -->
         <div class="navbar-logo">
             <a href="/index">
-                <img src="../images/logo/logo-3.svg" alt="Logo Her Broski">
+                <img src="/images/logo/msgboard-logo-3.svg" alt="Logo Her Broski">
             </a>
         </div>
         <!-- Logo Left End -->
@@ -16,7 +16,7 @@ const navbarHTML = `
         <!-- Menu Items Start -->
         <div class="guac-row guac-justify-center">
             <ul class="navbar-menu guac-d-flex guac-gap-3">
-                <li><a href="/order">My messages</a></li>
+                <li><a href="/new">New Post</a></li>
                 <li><a href="/order">Groups</a></li>
                 <li><a href="/order">Gallery</a></li>
                 <li><a href="/order">Events</a></li>
@@ -24,14 +24,6 @@ const navbarHTML = `
             </ul>
         </div>
         <!-- Menu Items End -->
-
-        <!-- Login Start -->
-        <div class="navbar-profile">
-            <a href="/login">
-                <button class="navbar-login-button">Log Ind</button>
-            </a>
-        </div>
-        <!-- Login End -->
         
     </div>
 </div>
