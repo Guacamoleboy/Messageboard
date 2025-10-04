@@ -4,7 +4,7 @@ const footerNavHTML = `
     <!-- Footer Navbar Start -->
     <section class="footer-navbar guac-d-flex guac-justify-center guac-align-center">
         <p>
-            Built by Andreas, Ebou & Jonas with 
+            Built Guacamoleboy with 
             <span style="color:#ff0000;">&#10084;</span>
         </p>
     </section>

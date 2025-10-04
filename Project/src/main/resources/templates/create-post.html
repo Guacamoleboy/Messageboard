@@ -32,6 +32,9 @@
     <script type="module" src="js/components/footer.js" defer></script>
     <script type="module" src="js/components/footer-nav.js" defer></script>
 
+    <!-- Script -->
+    <script src="js/stars.js" defer></script>
+
 </head>
 <body class="subpage event-page">
 
@@ -45,12 +48,9 @@
     <div class="guac-container">
         <div class="guac-row">
 
-            <div class="guac-col-auto subpage-msg-1">
-                <img src="images/icons/msg-icon-1.png" alt="Billede 1">
-            </div>
-            <div class="guac-col-auto subpage-msg-2">
-                <img src="images/icons/msg-icon-2.png" alt="Billede 2">
-            </div>
+            <!-- Background Start -->
+            <div class="stars"></div>
+            <!-- Background End -->
 
         </div>
     </div>
@@ -75,19 +75,22 @@
         <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
             <div class="guac-col-6">
 
-                <div class="create-post-form">
+                <form id="create-post-form" class="create-post-form" method="post" action="/new">
                     <label for="new-post-title" class="create-post-label">Titel</label>
-                    <input type="text" id="new-post-title" class="create-post-input" placeholder="Skriv titel her...">
+                    <input type="text" id="new-post-title" name="title" class="create-post-input" placeholder="Skriv titel her..." required>
+
                     <label for="new-post-description" class="create-post-label guac-mt-3">Beskrivelse</label>
-                    <textarea id="new-post-description" class="create-post-textarea" rows="6" placeholder="Skriv beskrivelse her..."></textarea>
+                    <textarea id="new-post-description" name="description" class="create-post-textarea" rows="6" placeholder="Skriv beskrivelse her..." required></textarea>
+
                     <div class="guac-mt-4 guac-text-right">
-                        <button class="guac-btn guac-btn-primary">Post</button>
+                        <button type="submit" class="guac-btn guac-btn-warning" style="color: #e8e8e8 !important">Post</button>
                     </div>
-                </div>
+                </form>
 
             </div>
         </div>
         <!-- Create Post End -->
+
 
     </div>
 

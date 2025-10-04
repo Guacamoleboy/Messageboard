@@ -13,27 +13,27 @@
     <title>Messageboard</title>
 
     <!-- Icon -->
-    <link rel="icon" href="images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
-    <link rel="apple-touch-icon" href="images/icons/msgboard.png">
+    <link rel="icon" href="/images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
+    <link rel="apple-touch-icon" href="/images/icons/msgboard.png">
 
     <!-- CSS Load -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Font Awesome Load -->
-    <link rel="stylesheet" href="css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
 
     <!-- Framwork load -->
-    <link rel="stylesheet" href="css/guacamoleboy-wow.css">
-    <link rel="stylesheet" href="css/guacamoleboy-framework.css">
-    <script src="js/guacamoleboy-wow.js" defer></script>
+    <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
+    <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
+    <script src="/js/guacamoleboy-wow.js" defer></script>
 
     <!-- Modules -->
-    <script type="module" src="js/components/navbar.js" defer></script>
-    <script type="module" src="js/components/footer.js" defer></script>
-    <script type="module" src="js/components/footer-nav.js" defer></script>
+    <script type="module" src="/js/components/navbar.js" defer></script>
+    <script type="module" src="/js/components/footer.js" defer></script>
+    <script type="module" src="/js/components/footer-nav.js" defer></script>
 
     <!-- Script -->
-    <script src="js/stars.js" defer></script>
+    <script src="/js/stars.js" defer></script>
 
 </head>
 <body class="subpage event-page">
@@ -57,21 +57,35 @@
 
     <!-- End Wave Hero Start -->
     <div class="wave-1">
-        <img src="images/waves/wave-top.svg">
+        <img src="/images/waves/wave-top.svg">
     </div>
     <!-- End Wave Hero End -->
 
 </section>
 <!-- Hero Section End -->
 
-<!-- Post Section Start -->
+<!-- Messages Section -->
 <section class="section-1">
     <div class="guac-container">
 
-        <h2 class="guac-mt-n3">Posts</h2>
+        <h2 class="guac-mt-n3">Search for posts</h2>
 
-        <!-- Posts Start -->
-        <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
+        <!-- Search Start -->
+        <div class="guac-row guac-justify-center guac-mt-5">
+            <div class="guac-col-6">
+                <form action="/search" method="get" class="search-wrapper">
+                    <input type="text" name="query" id="search-input" class="search-input" placeholder="Søg efter posts..." th:value="${query}">
+                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- Search End -->
+
+        <!-- Search Results Start -->
+        <div th:if="${query != null and !query.isEmpty()}" class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
+            <div th:if="${posts.isEmpty()}" class="guac-col-12">
+                <p>Ingen posts fundet for '<span th:text="${query}"></span>'</p>
+            </div>
 
             <div th:each="post : ${posts}" class="guac-col-6">
                 <a th:href="'/post/' + ${post.id}" class="guac-card post-card" style="text-decoration: none; color: inherit;">
@@ -89,16 +103,15 @@
             </div>
 
         </div>
-        <!-- Posts End -->
+        <!-- Search Results End -->
 
     </div>
 
     <div class="wave-3">
-        <img src="images/waves/footer-wave.svg" alt="">
+        <img src="/images/waves/footer-wave.svg" alt="">
     </div>
 
 </section>
-<!-- Post Section End -->
 
 <!-- Footer -->
 <div id="footer-component"></div>

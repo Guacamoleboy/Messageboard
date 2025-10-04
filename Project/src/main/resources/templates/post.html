@@ -13,24 +13,27 @@
     <title>Messageboard</title>
 
     <!-- Icon -->
-    <link rel="icon" href="images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
-    <link rel="apple-touch-icon" href="images/icons/msgboard.png">
+    <link rel="icon" href="/images/icons/msgboard.png" type="image/x-icon"> <!-- That little logo thats next to the title in URL -->
+    <link rel="apple-touch-icon" href="/images/icons/msgboard.png">
 
     <!-- CSS Load -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Font Awesome Load -->
-    <link rel="stylesheet" href="css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
 
     <!-- Framwork load -->
-    <link rel="stylesheet" href="css/guacamoleboy-wow.css">
-    <link rel="stylesheet" href="css/guacamoleboy-framework.css">
-    <script src="js/guacamoleboy-wow.js" defer></script>
+    <link rel="stylesheet" href="/css/guacamoleboy-wow.css">
+    <link rel="stylesheet" href="/css/guacamoleboy-framework.css">
+    <script src="/js/guacamoleboy-wow.js" defer></script>
 
     <!-- Modules -->
-    <script type="module" src="js/components/navbar.js" defer></script>
-    <script type="module" src="js/components/footer.js" defer></script>
-    <script type="module" src="js/components/footer-nav.js" defer></script>
+    <script type="module" src="/js/components/navbar.js" defer></script>
+    <script type="module" src="/js/components/footer.js" defer></script>
+    <script type="module" src="/js/components/footer-nav.js" defer></script>
+
+    <!-- Script -->
+    <script src="/js/stars.js" defer></script>
 
 </head>
 <body class="subpage event-page">
@@ -45,118 +48,107 @@
     <div class="guac-container">
         <div class="guac-row">
 
-            <div class="guac-col-auto subpage-msg-1">
-                <img src="images/icons/msg-icon-1.png" alt="Billede 1">
-            </div>
-            <div class="guac-col-auto subpage-msg-2">
-                <img src="images/icons/msg-icon-2.png" alt="Billede 2">
-            </div>
+            <!-- Background Start -->
+            <div class="stars"></div>
+            <!-- Background End -->
 
         </div>
     </div>
 
     <!-- End Wave Hero Start -->
     <div class="wave-1">
-        <img src="images/waves/wave-top.svg">
+        <img src="/images/waves/wave-top.svg">
     </div>
     <!-- End Wave Hero End -->
 
 </section>
 <!-- Hero Section End -->
 
-<!-- Section 1 Start -->
+<!-- Post Section Start -->
 <section class="section-1">
-    <div class="guac-container">
 
-        <h2 class="guac-mt-n3">Post Detaljer</h2>
+    <div class="guac-container">
+        <h2 class="guac-mt-n3" th:text="${post.title}">Post Titel</h2>
 
         <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
-
             <div class="guac-col-6">
 
                 <!-- Post Start -->
                 <div class="guac-card post-card">
 
-                    <!-- Post Header Start -->
+                    <!-- Post Header -->
                     <div class="post-card-header">
-                        <img src="images/icons/profile.png" alt="Avatar" class="post-card-avatar">
-                        <div class="post-card-title">Hvorfor er jeg i live?</div>
+                        <img src="/images/icons/profile.png" alt="Avatar" class="post-card-avatar">
+                        <div class="post-card-title" th:text="${post.title}">Post Titel</div>
                     </div>
-                    <!-- Post Header End -->
+                    <!-- Post Header -->
 
-                    <!-- Post Text Start -->
-                    <div class="post-card-text">
-                        Fuck hvor jeg hader livet. Sådan ægte. En dag ik? Så er jeg ikke på jorden længere. Det er ret crazy at tænke på..
-                        Nå. Jamen du må have en god dag ik? ok fuck alt.
+                    <!-- Post Text -->
+                    <div class="post-card-text" th:text="${post.description}">
+                        Post beskrivelse
                     </div>
-                    <!-- Post Text End -->
+                    <!-- Post Text -->
 
-                    <!-- Like & Dislike Start -->
+                    <!-- Like & Dislike -->
                     <div class="post-card-footer">
-                        <div><i class="fa fa-comments"></i> 5</div>
+                        <div><i class="fa fa-comments"></i> <span th:text="${post.commentCount}">0</span></div>
                         <div class="post-vote">
-                            <button class="vote-btn"><i class="fa fa-thumbs-up"></i> 12</button>
-                            <button class="vote-btn"><i class="fa fa-thumbs-down"></i> 2</button>
+                            <button class="vote-btn"><i class="fa fa-thumbs-up"></i> <span th:text="${post.upvotes}">0</span></button>
+                            <button class="vote-btn"><i class="fa fa-thumbs-down"></i> <span th:text="${post.downvotes}">0</span></button>
                         </div>
                     </div>
-                    <!-- Like & Dislike End -->
+                    <!-- Like & Dislike -->
 
                     <!-- Comments Start -->
                     <div class="guac-mt-4">
                         <h3>Kommmentarer</h3>
 
-                        <div class="guac-card comment-card guac-mt-2">
-                            <div class="post-card-header">
-                                <img src="images/icons/profile.png" alt="Avatar" class="post-card-avatar">
-                                <div class="post-card-title">Bruger1</div>
-                            </div>
-                            <div class="post-card-text">Mega fed post! Jeg er helt enig.</div>
-                            <div class="post-card-footer">
-                                <div class="post-vote">
-                                    <button class="vote-btn"><i class="fa fa-thumbs-up"></i> 3</button>
-                                    <button class="vote-btn"><i class="fa fa-thumbs-down"></i> 0</button>
-                                </div>
-                            </div>
+                        <div th:if="${post.comments.isEmpty()}">
+                            <p>Ingen kommentarer endnu.</p>
                         </div>
 
-                        <div class="guac-card comment-card guac-mt-2">
+                        <div th:each="comment : ${post.comments}" class="guac-card comment-card guac-mt-2">
                             <div class="post-card-header">
-                                <img src="images/icons/profile.png" alt="Avatar" class="post-card-avatar">
-                                <div class="post-card-title">Bruger2</div>
+                                <img src="/images/icons/profile.png" alt="Avatar" class="post-card-avatar">
+                                <div class="post-card-title" th:text="${post.author.username}">Author</div>
                             </div>
-                            <div class="post-card-text">Jeg synes også det er interessant, men kunne være længere.</div>
+                            <div class="post-card-text" th:text="${comment.content}">Kommentar tekst</div>
                             <div class="post-card-footer">
                                 <div class="post-vote">
-                                    <button class="vote-btn"><i class="fa fa-thumbs-up"></i> 2</button>
-                                    <button class="vote-btn"><i class="fa fa-thumbs-down"></i> 1</button>
+                                    <button class="vote-btn"><i class="fa fa-thumbs-up"></i> <span th:text="${comment.upvotes}">0</span></button>
+                                    <button class="vote-btn"><i class="fa fa-thumbs-down"></i> <span th:text="${comment.downvotes}">0</span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Comments End -->
+
                 </div>
-                <!-- Comments End -->
+                <!-- Post End -->
 
                 <!-- Add Comment Start -->
                 <div class="add-comment guac-col-9 guac-mt-3 guac-justify-center">
-                    <label for="new-comment">Tilføj kommentar:</label>
-                    <textarea id="new-comment" rows="3" placeholder="Skriv din kommentar her..."></textarea>
-                    <button>Tilføj kommentar</button>
+                    <form th:action="@{${post.id}}" method="post">
+                        <label for="new-comment">Tilføj kommentar:</label>
+                        <textarea id="new-comment" name="content" rows="3" placeholder="Skriv din kommentar her..." required></textarea>
+                        <button type="submit">Tilføj kommentar</button>
+                    </form>
                 </div>
-                <!-- Add Comment Start -->
+                <!-- Add Comment End -->
+
             </div>
-            <!-- Post End -->
+        </div>
 
-        </div> <!-- Row -->
-    </div> <!-- Container -->
-
-    <!-- Wave 3 Start -->
-    <div class="wave-3">
-        <img src="images/waves/footer-wave.svg" alt="">
     </div>
-    <!-- Wave 3 End -->
+
+    <!-- Footer Wave -->
+    <div class="wave-3">
+        <img src="/images/waves/footer-wave.svg" alt="">
+    </div>
+    <!-- Footer Wave -->
 
 </section>
-<!-- Section 1 Start -->
+<!-- Post Section End -->
 
 <!-- Footer -->
 <div id="footer-component"></div>

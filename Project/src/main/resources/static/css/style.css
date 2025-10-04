@@ -26,7 +26,7 @@
 :root {
 
     /* Default */
-    --background: #CAA4A4;
+    --background: #2c366c;
 
     /* Heart Button */
     --heart: #d11818;
@@ -35,10 +35,10 @@
     --footer-background: var(--background);
 
     /* Footer Nav */
-    --footer-nav-background: #9c7e7e;
+    --footer-nav-background: #1f254b;
 
     /* Section 1 */
-    --section-1-background: #BC4646;
+    --section-1-background: #2951b4;
 
     /* Section 2 */
     --section-2-background: #B36660;
@@ -58,8 +58,8 @@
     --input-border: #7B7B7B;
 
     /* Navbar */
-    --navbar-background: #D96363;
-    --nav-stroke: rgb(253, 149, 149);
+    --navbar-background: #4867b4;
+    --nav-stroke: #385396;
     --nav-text: #FFFFFF;
     --nav-text-hover: #b8b8b8;
     --nav-buttons: rgba(255, 255, 255, 0.24);
@@ -90,7 +90,7 @@
 
     /* Login & Register */
     --login-background: #ac7070;
-    --login-menu-background: #df9898;
+    --login-menu-background: #296dbb;
     --login-menu-title: #f0f0f0;
     --login-menu-border: #9F6868;
     --login-menu-input-background: #dbb1b1;
@@ -147,7 +147,7 @@
 
 html, body {
     font-family: 'Itim', cursive !important; /* Site Identity DO NOT REMOVE */
-    background: url(../images/textures/background-texture-1.svg);
+    background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
     background-color: var(--background) !important;
     overflow-x: hidden !important;
     overflow-y: scroll; /* Makes sure users can still Scroll */
@@ -373,7 +373,7 @@ body::-webkit-scrollbar { /* All other browsers */
 .navbar-login-button {
     border-radius: 15px;
     border: 2px solid var(--nav-login-button-stroke);
-    background-color: var(--nav-login-button);
+    background-color: #3d4991;
     box-shadow: 0 4px 8px rgba(0,0,0,0.30); /* x, y, blur, color*/
     font-size: 1.0rem;
     font-weight: 900;
@@ -384,7 +384,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .navbar-login-button:hover {
     transform: scale(1.05);
-    background-color: var(--nav-login-button-hover);
+    background-color: #364080;
 }
 
 .dropdown-menu {
@@ -482,6 +482,8 @@ body::-webkit-scrollbar { /* All other browsers */
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: 500;
+    transform: translateY(-0.9rem);
 }
 
 .wave-1 img,
@@ -495,10 +497,6 @@ body::-webkit-scrollbar { /* All other browsers */
     position: relative;
     z-index: 500;
     transform: translateY(0.125rem); /* Fixes the annoying wave issue.*/
-}
-
-.wave-1 img { /* Added this again */
-    filter: drop-shadow(0px -5px 10px rgba(0,0,0,0.2));
 }
 
 /* ___________________________________________ */
@@ -594,7 +592,7 @@ body::-webkit-scrollbar { /* All other browsers */
     justify-content: center;
     height: 100vh;
     text-align: center;
-    color: #7e5656;
+    color: #f5f5f5;
     padding: 2rem;
 }
 
@@ -829,16 +827,16 @@ body::-webkit-scrollbar { /* All other browsers */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: var(--login-background);
+    background-color: var(--background);
 }
 
 .login-container {
-    background: var(--login-menu-background);
+    background: #323c7a;
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    border: 2px solid var(--login-button-background);
+    border: 2px solid #404898;
     max-width: 400px;
     width: 90%;
 }
@@ -857,7 +855,7 @@ body::-webkit-scrollbar { /* All other browsers */
     display: block;
     width: 50%;
     height: 3px;
-    background-color: var(--login-button-background);
+    background-color: #404898;
     margin: 0.5rem auto 0 auto;
     border-radius: 2px;
 }
@@ -869,22 +867,22 @@ body::-webkit-scrollbar { /* All other browsers */
     font-size: 1.2rem !important;
     padding: 0.5rem 0 !important;
     text-align: center !important;
-    border: 2px solid var(--login-input-stroke);
+    border: 2px solid #404898;
     outline: none;
-    background-color: var(--login-menu-input-background);
-    color: var(--login-menu-input-placeholder);
+    background-color: #c0c0c0;
+    color: #525252;
     caret-color: transparent;
 }
 
 .login-container input::placeholder {
     font-family: 'Itim', cursive !important;
     color: var(--login-menu-input-placeholder);
-    font-size: 1.2rem; /* hvis du også vil matche størrelsen */
+    font-size: 1.2rem;
     text-align: center;
 }
 
 .login-container input:focus {
-    border: 3px solid var(--login-input-focused) !important;
+    border: 3px solid #404898 !important;
     box-shadow: none !important;
     font-family: 'Itim', cursive !important;
 }
@@ -916,7 +914,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .login-container select:focus {
-    border: 3px solid var(--login-button-background) !important;
+    border: 3px solid #323c7a !important;
     box-shadow: none !important;
 }
 
@@ -927,9 +925,9 @@ body::-webkit-scrollbar { /* All other browsers */
 /* ___________________________________________ */
 
 .guac-btn-form {
-    background-color: var(--login-button-background) !important;
+    background-color: #858585 !important;
     border-radius: 1rem !important;
-    border: 2px solid var(--login-button-stroke);
+    border: 2px solid #656565;
     font-size: 1.0rem !important;
     font-weight: bold !important;
     color: var(--login-button-text) !important;
@@ -937,7 +935,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .guac-btn-form:hover {
-    background-color: var(--login-button-hover) !important;
+    background-color: #656565 !important;
     transform: translateY(5%)
 }
 
@@ -2123,4 +2121,57 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .search-btn i {
     pointer-events: none;
+}
+
+.stars {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    background: white;
+    box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
+    22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
+    38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white,
+    53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white,
+    68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white,
+    83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white,
+    98vw 35vh 2px white, 5vw 60vh 1px white, 12vw 65vh 2px white,
+    18vw 72vh 1px white, 25vw 78vh 2px white, 30vw 85vh 1px white,
+    35vw 68vh 2px white, 40vw 82vh 1px white, 45vw 92vh 2px white,
+    50vw 75vh 1px white, 55vw 88vh 2px white, 60vw 95vh 1px white,
+    65vw 72vh 2px white, 70vw 85vh 1px white, 75vw 78vh 2px white,
+    80vw 92vh 1px white, 85vw 82vh 2px white, 90vw 88vh 1px white,
+    95vw 75vh 2px white;
+    animation: twinkle 8s infinite linear;
+}
+
+.stars::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: white;
+    box-shadow: 8vw 12vh 2px white, 16vw 18vh 1px white, 24vw 25vh 2px white,
+    33vw 15vh 1px white, 41vw 28vh 2px white, 49vw 35vh 1px white,
+    57vw 22vh 2px white, 65vw 42vh 1px white, 73vw 28vh 2px white,
+    81vw 48vh 1px white, 89vw 32vh 2px white, 97vw 45vh 1px white,
+    3vw 68vh 2px white, 11vw 75vh 1px white, 19vw 82vh 2px white,
+    27vw 88vh 1px white, 35vw 72vh 2px white, 43vw 85vh 1px white,
+    51vw 92vh 2px white, 59vw 78vh 1px white;
+    animation: twinkle 6s infinite linear reverse;
+}
+
+.random-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fadeTwinkle 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeTwinkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    30% { opacity: 1; transform: scale(1); }
+    70% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
 }

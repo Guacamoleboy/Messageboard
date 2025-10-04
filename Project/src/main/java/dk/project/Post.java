@@ -14,6 +14,9 @@ public class Post {
     private String description;
     private LocalDateTime createdAt;
     private List<Comment> comments;
+    private int commentCount;
+    private int upvotes;
+    private int downvotes;
 
     // __________________________________________________
 
@@ -44,6 +47,42 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    // __________________________________________________
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    // __________________________________________________
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    // __________________________________________________
+
+    public int getUpvotes() {
+        return upvotes;
+    }
+
+    // __________________________________________________
+
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    // __________________________________________________
+
+    public int getDownvotes() {
+        return downvotes;
+    }
+
+    // __________________________________________________
+
+    public void setDownvotes(int downvotes) {
+        this.downvotes = downvotes;
     }
 
     // __________________________________________________

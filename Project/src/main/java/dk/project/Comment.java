@@ -9,18 +9,44 @@ public class Comment {
     // Attributes
     private int id;
     private int postId;
+    private int upvotes;
+    private int downvotes;
     private User author;
     private String content;
     private LocalDateTime createdAt;
 
     // __________________________________________________
 
-    public Comment(int id, int postId, User author, String content, LocalDateTime createdAt) {
+    public Comment(int id, int postId, User author, String content, LocalDateTime createdAt, int upvotes, int downvotes) {
         this.id = id;
         this.postId = postId;
         this.author = author;
         this.content = content;
         this.createdAt = createdAt;
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+    }
+
+    public int getUpvotes() {
+        return upvotes;
+    }
+
+    // __________________________________________________
+
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    // __________________________________________________
+
+    public int getDownvotes() {
+        return downvotes;
+    }
+
+    // __________________________________________________
+
+    public void setDownvotes(int downvotes) {
+        this.downvotes = downvotes;
     }
 
     // __________________________________________________

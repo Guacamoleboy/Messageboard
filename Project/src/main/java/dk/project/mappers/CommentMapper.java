@@ -33,7 +33,9 @@ public class CommentMapper {
                         rs.getInt("post_id"),
                         author,
                         rs.getString("content"),
-                        rs.getTimestamp("created_at").toLocalDateTime()
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getInt("upvotes"),
+                        rs.getInt("downvotes")
                 );
             }
         }
@@ -55,7 +57,9 @@ public class CommentMapper {
                         rs.getInt("post_id"),
                         author,
                         rs.getString("content"),
-                        rs.getTimestamp("created_at").toLocalDateTime()
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getInt("upvotes"),
+                        rs.getInt("downvotes")
                 ));
             }
         }
@@ -65,12 +69,14 @@ public class CommentMapper {
     // __________________________________________________
 
     public void insertComment(Comment comment) throws SQLException {
-        String sql = "INSERT INTO comments (user_id, post_id, content, created_at) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO comments (user_id, post_id, content, created_at, upvotes, downvotes) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, comment.getAuthor().getId());
             stmt.setInt(2, comment.getPostId());
             stmt.setString(3, comment.getContent());
             stmt.setTimestamp(4, Timestamp.valueOf(comment.getCreatedAt()));
+            stmt.setInt(5, comment.getUpvotes());
+            stmt.setInt(6, comment.getDownvotes());
             stmt.executeUpdate();
         }
     }

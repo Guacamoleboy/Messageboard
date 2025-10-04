@@ -9,16 +9,16 @@ public class PostVoteMapper {
     // Attributes
     private Connection connection;
 
-    // __________________________________________________
+    // _________________________________________________________________
 
     public PostVoteMapper(Connection connection) {
         this.connection = connection;
     }
 
-    // __________________________________________________
+    // _________________________________________________________________
 
     public int getUpvotes(int postId) throws SQLException {
-        String sql = "SELECT COUNT(*) AS count FROM post_votes WHERE post_id = ? AND vote_type = 'UP'";
+        String sql = "SELECT COUNT(*) AS count FROM post_votes WHERE post_id = ? AND vote = 1";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, postId);
             ResultSet rs = stmt.executeQuery();
@@ -29,10 +29,10 @@ public class PostVoteMapper {
         return 0;
     }
 
-    // __________________________________________________
+    // _________________________________________________________________
 
     public int getDownvotes(int postId) throws SQLException {
-        String sql = "SELECT COUNT(*) AS count FROM post_votes WHERE post_id = ? AND vote_type = 'DOWN'";
+        String sql = "SELECT COUNT(*) AS count FROM post_votes WHERE post_id = ? AND vote = -1";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, postId);
             ResultSet rs = stmt.executeQuery();
@@ -43,49 +43,45 @@ public class PostVoteMapper {
         return 0;
     }
 
-    // __________________________________________________
+    // _________________________________________________________________
 
-    public String getUserVote(int postId, int userId) throws SQLException {
-        String sql = "SELECT vote_type FROM post_votes WHERE post_id = ? AND user_id = ?";
+    public Integer getUserVote(int postId, int userId) throws SQLException {
+        String sql = "SELECT vote FROM post_votes WHERE post_id = ? AND user_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, postId);
             stmt.setInt(2, userId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getString("vote_type");
+                return rs.getInt("vote"); // 1 eller -1
             }
         }
         return null;
     }
 
-    // __________________________________________________
+    // _________________________________________________________________
 
-    public void vote(int postId, int userId, String voteType) throws SQLException {
-
-        String existingVote = getUserVote(postId, userId);
+    public void vote(int postId, int userId, int vote) throws SQLException {
+        Integer existingVote = getUserVote(postId, userId);
         if (existingVote == null) {
-
-            String sql = "INSERT INTO post_votes (post_id, user_id, vote_type) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO post_votes (post_id, user_id, vote) VALUES (?, ?, ?)";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setInt(1, postId);
                 stmt.setInt(2, userId);
-                stmt.setString(3, voteType);
+                stmt.setInt(3, vote);
                 stmt.executeUpdate();
             }
-        } else if (!existingVote.equals(voteType)) {
-
-            String sql = "UPDATE post_votes SET vote_type = ? WHERE post_id = ? AND user_id = ?";
+        } else if (existingVote != vote) {
+            String sql = "UPDATE post_votes SET vote = ? WHERE post_id = ? AND user_id = ?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, voteType);
+                stmt.setInt(1, vote);
                 stmt.setInt(2, postId);
                 stmt.setInt(3, userId);
                 stmt.executeUpdate();
             }
         }
-
     }
 
-    // __________________________________________________
+    // _________________________________________________________________
 
     public void removeVote(int postId, int userId) throws SQLException {
         String sql = "DELETE FROM post_votes WHERE post_id = ? AND user_id = ?";
@@ -96,4 +92,4 @@ public class PostVoteMapper {
         }
     }
 
-} // PostVote end
+} // PostVoteMapper end

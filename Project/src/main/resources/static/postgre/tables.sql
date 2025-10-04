@@ -19,6 +19,8 @@ id SERIAL PRIMARY KEY,
 post_id INT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
 user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
 content TEXT NOT NULL,
+upvotes INT DEFAULT 0,
+downvotes INT DEFAULT 0,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -26,7 +28,7 @@ CREATE TABLE post_votes (
 id SERIAL PRIMARY KEY,
 post_id INT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
 user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-vote SMALLINT NOT NULL CHECK (vote IN (1, -1)), -- 1 = upvote, -1 = downvote
+vote SMALLINT NOT NULL CHECK (vote IN (1, -1)),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 UNIQUE(post_id, user_id)
 );
@@ -35,7 +37,7 @@ CREATE TABLE comment_votes (
 id SERIAL PRIMARY KEY,
 comment_id INT NOT NULL REFERENCES comments(id) ON DELETE CASCADE,
 user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-vote SMALLINT NOT NULL CHECK (vote IN (1, -1)), -- 1 = upvote, -1 = downvote
+vote SMALLINT NOT NULL CHECK (vote IN (1, -1)),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 UNIQUE(comment_id, user_id)
 );

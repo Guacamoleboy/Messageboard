@@ -16,14 +16,22 @@ const navbarHTML = `
         <!-- Menu Items Start -->
         <div class="guac-row guac-justify-center">
             <ul class="navbar-menu guac-d-flex guac-gap-3">
-                <li><a href="/new">New Post</a></li>
-                <li><a href="/order">Groups</a></li>
-                <li><a href="/order">Gallery</a></li>
-                <li><a href="/order">Events</a></li>
-                <li><a href="/order">Contact</a></li>
+                <li><a href="/new">Create Post</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/NOTHING">Gallery</a></li>
+                <li><a href="/NOTHING">Events</a></li>
+                <li><a href="/NOTHING">Contact</a></li>
             </ul>
         </div>
         <!-- Menu Items End -->
+        
+        <!-- Login Start -->
+        <div class="navbar-profile">
+            <a href="/">
+                <button class="navbar-login-button">Log Out</button>
+            </a>
+        </div>
+        <!-- Login End -->
         
     </div>
 </div>
