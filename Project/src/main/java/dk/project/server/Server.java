@@ -50,6 +50,7 @@ public class Server {
 
         // __________________________________________________
 
+        // Login Post
         app.post("/", ctx -> {
             String username = ctx.formParam("username");
             String password = ctx.formParam("password");
@@ -83,6 +84,7 @@ public class Server {
 
         // __________________________________________________
 
+        // Index page (Post Viewing)
         app.get("/index", ctx -> {
             User currentUser = ctx.sessionAttribute("currentUser");
 
@@ -118,6 +120,7 @@ public class Server {
 
         // __________________________________________________
 
+        // Register Post
         app.post("/register", ctx -> {
             String username = ctx.formParam("username");
             String email = ctx.formParam("email");
@@ -146,6 +149,7 @@ public class Server {
 
         // __________________________________________________
 
+        // Create New Post
         app.post("/new", ctx -> {
 
             User currentUser = ctx.sessionAttribute("currentUser");
@@ -172,10 +176,12 @@ public class Server {
             } else {
                 ctx.status(500).result("Kunne ikke oprette posten.");
             }
+
         });
 
         // __________________________________________________
 
+        // On post click
         app.get("/post/{id}", ctx -> {
 
             User currentUser = ctx.sessionAttribute("currentUser");
@@ -209,11 +215,13 @@ public class Server {
             model.put("user", currentUser);
 
             String html = ThymeleafSetup.render("post.html", model);
+
             ctx.html(html);
         });
 
         // __________________________________________________
 
+        // Comment on post redirect
         app.post("/post/{id}", ctx -> {
 
             int postId = Integer.parseInt(ctx.pathParam("id"));
@@ -230,10 +238,12 @@ public class Server {
             commentMapper.insertComment(comment);
 
             ctx.redirect(ctx.path());
+
         });
 
         // __________________________________________________
 
+        // Search
         app.get("/search", ctx -> {
 
             User currentUser = ctx.sessionAttribute("currentUser");
@@ -281,6 +291,7 @@ public class Server {
 
         // System print
         System.out.println("http://localhost:" + port + " | I din URL bby girl");
+
     }
 
     // __________________________________________________

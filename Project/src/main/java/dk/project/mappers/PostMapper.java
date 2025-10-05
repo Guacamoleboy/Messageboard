@@ -66,33 +66,6 @@ public class PostMapper {
 
     // __________________________________________________
 
-    public List<Post> searchPosts(String keyword) throws SQLException {
-
-        List<Post> posts = new ArrayList<>();
-
-        String sql = "SELECT * FROM posts WHERE title ILIKE ? OR description ILIKE ? ORDER BY created_at DESC";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            String pattern = "%" + keyword + "%";
-            stmt.setString(1, pattern);
-            stmt.setString(2, pattern);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                User author = new UserMapper(connection).getUserById(rs.getInt("user_id"));
-                LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
-                posts.add(new Post(
-                        rs.getInt("id"),
-                        author,
-                        rs.getString("title"),
-                        rs.getString("description"),
-                        createdAt
-                ));
-            }
-        }
-        return posts;
-    }
-
-    // __________________________________________________
-
     public int insertPost(Post post) throws SQLException {
 
         String sql = "INSERT INTO posts (user_id, title, description, created_at) VALUES (?, ?, ?, ?) RETURNING id";
@@ -117,9 +90,9 @@ public class PostMapper {
 
     public List<Post> searchPostsByTitle(String keyword) throws SQLException {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT * FROM posts WHERE title ILIKE ? ORDER BY created_at DESC";
+        String sql = "SELECT * FROM posts WHERE title ILIKE ? ORDER BY created_at DESC"; // Ignores caps etc
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            String pattern = "%" + keyword + "%";
+            String pattern = "%" + keyword + "%"; // Makes sure our keywoard is being searched for no matter whats infront of behind it
             stmt.setString(1, pattern);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -127,7 +100,7 @@ public class PostMapper {
                 LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
                 posts.add(new Post(
                         rs.getInt("id"),
-                        author,
+                        author, // user_id
                         rs.getString("title"),
                         rs.getString("description"),
                         createdAt
@@ -138,6 +111,7 @@ public class PostMapper {
     }
 
     // __________________________________________________
+    // NOT IN USE - FOR FUTURE PROJECTS
 
     public void updatePost(Post post) throws SQLException {
         String sql = "UPDATE posts SET title = ?, description = ? WHERE id = ?";
@@ -150,6 +124,7 @@ public class PostMapper {
     }
 
     // __________________________________________________
+    // NOT IN USE - FOR FUTURE PROJECTS
 
     public void deletePost(int id) throws SQLException {
         String sql = "DELETE FROM posts WHERE id = ?";

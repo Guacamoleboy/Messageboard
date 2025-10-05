@@ -1,5 +1,7 @@
+// Package
 package dk.project.mappers;
 
+// Imports
 import dk.project.CommentVote;
 import dk.project.User;
 import java.sql.*;
@@ -8,11 +10,16 @@ import java.util.List;
 
 public class CommentVoteMapper {
 
+    // Attributes
     private Connection connection;
+
+    // _______________________________________________________________________
 
     public CommentVoteMapper(Connection connection) {
         this.connection = connection;
     }
+
+    // _______________________________________________________________________
 
     public CommentVote getVoteById(int id) throws SQLException {
         String sql = "SELECT * FROM comment_votes WHERE id = ?";
@@ -32,6 +39,8 @@ public class CommentVoteMapper {
         }
         return null;
     }
+
+    // _______________________________________________________________________
 
     public List<CommentVote> getVotesForComment(int commentId) throws SQLException {
         List<CommentVote> votes = new ArrayList<>();
@@ -53,6 +62,9 @@ public class CommentVoteMapper {
         return votes;
     }
 
+    // _______________________________________________________________________
+    // NOT IN USE - FOR FUTURE PROJECTS
+
     public void insertVote(CommentVote vote) throws SQLException {
         String sql = "INSERT INTO comment_votes (user_id, comment_id, vote, created_at) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -64,6 +76,9 @@ public class CommentVoteMapper {
         }
     }
 
+    // _______________________________________________________________________
+    // NOT IN USE - FOR FUTURE PROJECTS
+
     public void updateVote(CommentVote vote) throws SQLException {
         String sql = "UPDATE comment_votes SET vote = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -73,6 +88,9 @@ public class CommentVoteMapper {
         }
     }
 
+    // _______________________________________________________________________
+    // NOT IN USE - FOR FUTURE PROJECTS
+
     public void deleteVote(int id) throws SQLException {
         String sql = "DELETE FROM comment_votes WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -80,4 +98,5 @@ public class CommentVoteMapper {
             stmt.executeUpdate();
         }
     }
-}
+
+} // CommentVoteMapper end

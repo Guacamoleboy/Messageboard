@@ -68,10 +68,10 @@
 <section class="section-1">
 
     <div class="guac-container">
-        <h2 class="guac-mt-n3">Post info</h2>
+        <h2 class="guac-mt-n3 guac-animate guac-fade-slide-up">Post info</h2>
 
         <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
-            <div class="guac-col-6">
+            <div class="guac-col-6 guac-animate guac-fade-slide-up">
 
                 <!-- Post Start -->
                 <div class="guac-card post-card">
@@ -129,7 +129,7 @@
                 <!-- Post End -->
 
                 <!-- Add Comment Start -->
-                <div class="add-comment guac-col-9 guac-mt-3 guac-justify-center">
+                <div class="add-comment guac-col-9 guac-mt-3 guac-justify-center guac-animate guac-fade-slide-up">
                     <form th:action="@{${post.id}}" method="post">
                         <label for="new-comment">Tilføj kommentar:</label>
                         <textarea id="new-comment" name="content" rows="3" placeholder="Skriv din kommentar her..." required></textarea>

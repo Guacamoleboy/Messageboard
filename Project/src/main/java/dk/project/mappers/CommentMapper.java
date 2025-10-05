@@ -31,7 +31,7 @@ public class CommentMapper {
                 return new Comment(
                         rs.getInt("id"),
                         rs.getInt("post_id"),
-                        author,
+                        author, // user_id
                         rs.getString("content"),
                         rs.getTimestamp("created_at").toLocalDateTime(),
                         rs.getInt("upvotes"),
@@ -55,7 +55,7 @@ public class CommentMapper {
                 comments.add(new Comment(
                         rs.getInt("id"),
                         rs.getInt("post_id"),
-                        author,
+                        author, // user_id
                         rs.getString("content"),
                         rs.getTimestamp("created_at").toLocalDateTime(),
                         rs.getInt("upvotes"),
@@ -82,6 +82,7 @@ public class CommentMapper {
     }
 
     // __________________________________________________
+    // NOT IN USE - JUST FOR FUTURE PROJECTS
 
     public void updateComment(Comment comment) throws SQLException {
         String sql = "UPDATE comments SET content = ? WHERE id = ?";
@@ -93,6 +94,7 @@ public class CommentMapper {
     }
 
     // __________________________________________________
+    // NOT IN USE - JUST FOR FUTURE PROJECTS
 
     public void deleteComment(int id) throws SQLException {
         String sql = "DELETE FROM comments WHERE id = ?";

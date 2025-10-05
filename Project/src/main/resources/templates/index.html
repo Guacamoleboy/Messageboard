@@ -73,7 +73,7 @@
         <!-- Posts Start -->
         <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
 
-            <div th:each="post : ${posts}" class="guac-col-6">
+            <div th:each="post : ${posts}" class="guac-col-6 guac-animate guac-fade-slide-up">
                 <a th:href="'/post/' + ${post.id}" class="guac-card post-card" style="text-decoration: none; color: inherit;">
                 <div class="post-card-header">
                         <img src="/images/icons/profile.png" alt="Avatar" class="post-card-avatar">

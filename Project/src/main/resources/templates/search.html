@@ -68,10 +68,10 @@
 <section class="section-1">
     <div class="guac-container">
 
-        <h2 class="guac-mt-n3">Search for posts</h2>
+        <h2 class="guac-mt-n3 guac-animate guac-fade-slide-up">Search for posts</h2>
 
         <!-- Search Start -->
-        <div class="guac-row guac-justify-center guac-mt-5">
+        <div class="guac-row guac-justify-center guac-mt-5 guac-animate guac-fade-slide-up">
             <div class="guac-col-6">
                 <form action="/search" method="get" class="search-wrapper">
                     <input type="text" name="query" id="search-input" class="search-input" placeholder="Søg efter posts..." th:value="${query}">
@@ -82,12 +82,12 @@
         <!-- Search End -->
 
         <!-- Search Results Start -->
-        <div th:if="${query != null and !query.isEmpty()}" class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
+        <div th:if="${query != null and !query.isEmpty()}" class="guac-row guac-gap-3 guac-justify-center guac-mt-5 guac-animate guac-fade-slide-up">
             <div th:if="${posts.isEmpty()}" class="guac-col-12">
                 <p>Ingen posts fundet for '<span th:text="${query}"></span>'</p>
             </div>
 
-            <div th:each="post : ${posts}" class="guac-col-6">
+            <div th:each="post : ${posts}" class="guac-col-6 guac-animate guac-fade-slide-up">
                 <a th:href="'/post/' + ${post.id}" class="guac-card post-card" style="text-decoration: none; color: inherit;">
                 <div class="post-card-header">
                         <img src="/images/icons/profile.png" alt="Avatar" class="post-card-avatar">
