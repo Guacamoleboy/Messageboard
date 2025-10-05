@@ -68,7 +68,7 @@
 <section class="section-1">
 
     <div class="guac-container">
-        <h2 class="guac-mt-n3" th:text="${post.title}">Post Titel</h2>
+        <h2 class="guac-mt-n3">Post info</h2>
 
         <div class="guac-row guac-gap-3 guac-justify-center guac-mt-5">
             <div class="guac-col-6">
@@ -103,14 +103,16 @@
                     <div class="guac-mt-4">
                         <h3>Kommmentarer</h3>
 
-                        <div th:if="${post.comments.isEmpty()}">
-                            <p>Ingen kommentarer endnu.</p>
+                        <!-- If Empty -->
+                        <div th:if="${post.comments.isEmpty()}" class="guac-mt-5">
+                            <p style="color: #1f1f1f !important;">Ingen kommentarer endnu.</p>
                         </div>
+                        <!-- If Empty -->
 
                         <div th:each="comment : ${post.comments}" class="guac-card comment-card guac-mt-2">
                             <div class="post-card-header">
                                 <img src="/images/icons/profile.png" alt="Avatar" class="post-card-avatar">
-                                <div class="post-card-title" th:text="${post.author.username}">Author</div>
+                                <div class="post-card-title" th:text="${comment.author.username}">Author</div>
                             </div>
                             <div class="post-card-text" th:text="${comment.content}">Kommentar tekst</div>
                             <div class="post-card-footer">

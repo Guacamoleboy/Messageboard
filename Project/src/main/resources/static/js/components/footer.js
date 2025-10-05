@@ -10,7 +10,7 @@ const footerHTML = `
                     <ul>
                         <li><a href="../templates/index.html">Om os</a></li>
                         <li><a href="../templates/contact.html">Kundeservice</a></li>
-                        <li><a href="../templates/order.html">Bestil Cupcakes</a></li>
+                        <li><a href="../templates/order.html">Livet er lort</a></li>
                     </ul>
                 </div>
                 <div class="guac-col-auto footer-col">

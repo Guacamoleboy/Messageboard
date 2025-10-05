@@ -59,7 +59,7 @@
 
     /* Navbar */
     --navbar-background: #4867b4;
-    --nav-stroke: #385396;
+    --nav-stroke: #d9d9d9;
     --nav-text: #FFFFFF;
     --nav-text-hover: #b8b8b8;
     --nav-buttons: rgba(255, 255, 255, 0.24);
@@ -133,9 +133,6 @@
     --order-product-item-bg: #703e3e79;
     --order-product-item-border: #ac7a7a;
     --order-add-product-button: #c56969;
-
-    /* Notification */
-    --notification-background: #c77b7b;
 
 }
 
@@ -1988,6 +1985,7 @@ body::-webkit-scrollbar { /* All other browsers */
 
 .add-comment {
     color: #FFF !important;
+    width: 90% !important;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -1995,7 +1993,7 @@ body::-webkit-scrollbar { /* All other browsers */
 }
 
 .add-comment textarea {
-    width: 100%;
+    width: 128%; /* Hardcoded as fuck. Idc right now! */
     border-radius: 15px;
     padding: 0.75rem;
     font-size: 0.95rem;

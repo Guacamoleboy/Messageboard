@@ -129,6 +129,7 @@ public class Server {
             }
 
             User existingUser = userMapper.getUserByUsername(username);
+
             if (existingUser != null) {
                 ctx.status(409).result("Brugernavn er allerede taget!");
                 return;
